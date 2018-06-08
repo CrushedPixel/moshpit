@@ -1,0 +1,15 @@
+[[constraint]]
+  name = "github.com/trimmer-io/go-timecode"
+  # required for build to work
+  revision = "652b5c4cae11abde9bdc44cd5ba9cf1bfcd06a1a"
+  source = "https://github.com/crushedpixel/go-timecode.git"
+
+[[constraint]]
+  name = "github.com/schollz/progressbar"
+  # required for description and SaucerHead feature
+  revision = "f7bddd0985e47e35e8bc6f2e94fc7d28fb0a196b"
+  source = "https://github.com/CrushedPixel/progressbar.git"
+
+[[constraint]]
+  name = "github.com/satori/go.uuid"
+  revision = "36e9d2ebbde5e3f13ab2e25625fd453271d6522e"
