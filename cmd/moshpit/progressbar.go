@@ -2,12 +2,8 @@ package main
 
 import (
 	"bytes"
-	"fmt"
 	"github.com/k0kubun/go-ansi"
-	"github.com/mitchellh/colorstring"
 	"github.com/schollz/progressbar"
-	"regexp"
-	"strings"
 )
 
 type floatProgressBar struct {
@@ -16,17 +12,17 @@ type floatProgressBar struct {
 	resolution int
 	current    int
 
-	buf           *bytes.Buffer
-	maxLineLength int
+	buf *bytes.Buffer
 }
 
 func newDefaultFloatProgressBar(description string) *floatProgressBar {
 	return newFloatProgressBar(10000,
+		progressbar.OptionEnableColorCodes(true),
 		progressbar.OptionSetWidth(15),
-		progressbar.OptionSetDescription(colorstring.Color(description)),
+		progressbar.OptionSetDescription(description),
 		progressbar.OptionSetTheme(progressbar.Theme{
-			Saucer:        colorstring.Color("[green]="),
-			SaucerHead:    colorstring.Color("[green]>"),
+			Saucer:        "[green]=[reset]",
+			SaucerHead:    "[green]>[reset]",
 			SaucerPadding: " ",
 			BarStart:      "[",
 			BarEnd:        "]",
@@ -75,29 +71,12 @@ func (p *floatProgressBar) RenderBlank() {
 	p.writeRendered()
 }
 
-// regex matching ansi escape codes
-var ansiRegex = regexp.MustCompile(`\x1b\[[0-9;]*[a-zA-Z]`)
-
-func (p *floatProgressBar) writeRendered() {
-	bs := p.buf.String()
-
-	// measure the length of the written progress bar
-	// without the ansi escape sequences, to be able
-	// to overwrite it with spaces when erasing.
-	l := len(ansiRegex.ReplaceAllString(bs, ""))
-	if l > p.maxLineLength {
-		p.maxLineLength = l
-	}
-	ansi.Print(bs)
+func (p *floatProgressBar) Clear() {
+	p.buf.Reset()
+	p.ProgressBar.Clear()
+	p.writeRendered()
 }
 
-func (p *floatProgressBar) Erase() {
-	if p.maxLineLength == 0 {
-		p.maxLineLength++
-	}
-	// overwrites the current line with spaces
-	// and moves the cursor back to line start.
-	// this is required for compatibility with cmd.exe,
-	// which does not seem to support ansi.EraseInLine(2)
-	fmt.Printf("\r%s\r", strings.Repeat(" ", p.maxLineLength-1))
+func (p *floatProgressBar) writeRendered() {
+	ansi.Print(p.buf.String())
 }

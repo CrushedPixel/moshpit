@@ -6,9 +6,8 @@
 
 [[constraint]]
   name = "github.com/schollz/progressbar"
-  # required for description and SaucerHead feature
-  revision = "f7bddd0985e47e35e8bc6f2e94fc7d28fb0a196b"
-  source = "https://github.com/CrushedPixel/progressbar.git"
+  # required for color codes and Clear() features
+  revision = "cc61d3b564829f7a41e66e10b8154c8a0199274e"
 
 [[constraint]]
   name = "github.com/satori/go.uuid"

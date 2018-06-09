@@ -213,7 +213,7 @@ func cmdScenes(ctx context.Context, ffmpegPath string, ffmpegLogPath string, fil
 		select {
 		case err, ok := <-errorChan:
 			if !ok {
-				bar.Erase()
+				bar.Clear()
 				ansi.Printf(colorstring.Color("Found [green]%d[reset] scene changes."), len(sceneTimes))
 				if len(sceneTimes) == 0 {
 					fmt.Println()
@@ -226,7 +226,7 @@ func cmdScenes(ctx context.Context, ffmpegPath string, ffmpegLogPath string, fil
 			sceneTimes = append(sceneTimes, sceneTime)
 
 			// erase progress bar
-			bar.Erase()
+			bar.Clear()
 
 			colorstring.Fprintf(ansi.NewAnsiStdout(),
 				"Found scene change at [cyan]%s[reset] (frame [red]%d[reset])",
@@ -331,7 +331,7 @@ func convertToAvi(ctx context.Context, ffmpegPath string, ffmpegLogPath string, 
 		case err, ok := <-errorChan:
 			if !ok {
 				// processing has finished
-				bar.Erase()
+				bar.Clear()
 				ansi.Print(colorstring.Color("[cyan][1/3][reset] Wrote AVI file for moshing."))
 				return aviFileName, nil
 			}
@@ -378,7 +378,7 @@ func moshAvi(ctx context.Context, aviFileName string, moshFrames []uint64) (stri
 		case err, ok := <-errorChan:
 			if !ok {
 				// processing has finished
-				bar.Erase()
+				bar.Clear()
 				ansi.Print(colorstring.Color("[cyan][2/3][reset] Moshed AVI file."))
 				return moshedFileName, nil
 			}
@@ -410,7 +410,7 @@ func bake(ctx context.Context, ffmpegPath string, ffmpegLogPath string, original
 		select {
 		case err, ok := <-errorChan:
 			if !ok {
-				bar.Erase()
+				bar.Clear()
 				ansi.Print(colorstring.Color("[cyan][3/3][reset] Baked output file."))
 				return nil
 			}

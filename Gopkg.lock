@@ -51,8 +51,7 @@
 [[projects]]
   name = "github.com/schollz/progressbar"
   packages = ["."]
-  revision = "f7bddd0985e47e35e8bc6f2e94fc7d28fb0a196b"
-  source = "https://github.com/CrushedPixel/progressbar.git"
+  revision = "cc61d3b564829f7a41e66e10b8154c8a0199274e"
 
 [[projects]]
   name = "github.com/trimmer-io/go-timecode"
@@ -75,6 +74,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "b7f5ae7654177069e47f80fde0e5b53c0de59e44ff92efe860348b6746b33588"
+  inputs-digest = "0cee90047dce69b5cfb9e4f0528a0946c1bace4d51794874aac414f5d98c2111"
   solver-name = "gps-cdcl"
   solver-version = 1
