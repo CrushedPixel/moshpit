@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"context"
 	"errors"
 	"flag"
@@ -14,6 +15,7 @@ import (
 	"os/signal"
 	"path"
 	"path/filepath"
+	"runtime"
 	"strconv"
 	"strings"
 	"syscall"
@@ -84,7 +86,17 @@ func promptLoop(ctx context.Context, file *os.File, ffmpegPath string, ffmpegLog
 	for {
 		go func() {
 			ansi.CursorShow()
-			inputChan <- prompt.Input("> ", completer)
+			if runtime.GOOS == "windows" {
+				// on windows, use a plain input prompt,
+				// as the ANSI codes from the prompt package
+				// are not well supported
+				fmt.Print("> ")
+				scanner := bufio.NewScanner(os.Stdin)
+				scanner.Scan()
+				inputChan <- scanner.Text()
+			} else {
+				inputChan <- prompt.Input("> ", completer)
+			}
 			ansi.CursorHide()
 		}()
 

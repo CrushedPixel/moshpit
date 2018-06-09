@@ -10,6 +10,7 @@ import (
 	"os"
 	"os/exec"
 	"regexp"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -47,12 +48,19 @@ func runFFmpeg(ctx context.Context, ffmpegPath string,
 		defer logFile.Close()
 	}
 
+	var stdoutName string
+	if runtime.GOOS == "windows" {
+		// pipe:1 is the windows equivalent of /dev/stdout
+		stdoutName = "pipe:1"
+	} else {
+		stdoutName = os.Stdout.Name()
+	}
+
 	args = append(args[:len(args)-1],
 		// inject the -progress option before the output file name
 		// so we can parse progress information from stdout
 		// and supply it to the progress channel.
-		// TODO: test on Windows
-		"-progress", os.Stdout.Name(),
+		"-progress", stdoutName,
 		args[len(args)-1])
 
 	if logFile != nil {
