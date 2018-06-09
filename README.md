@@ -4,8 +4,8 @@ A command-line tool for precise datamoshing using I-Frame removal.
 Comes with built-in scene cut detection for optimal results.
 
 ![tutorial](https://i.imgur.com/XGrR2Kv.gif)
-![original](https://i.imgur.com/GJ0ahuC.gif)
-![moshed](https://i.imgur.com/kZVTvIf.gif)
+![original](https://i.imgur.com/nWUzNkC.gif)
+![moshed](https://i.imgur.com/qx776K6.gif)
 
 # Installation
 Aside from the *moshpit* binary, which can be downloaded from the [releases page](https://github.com/CrushedPixel/moshpit/releases),
