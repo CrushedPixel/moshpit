@@ -6,11 +6,6 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"github.com/c-bata/go-prompt"
-	"github.com/crushedpixel/moshpit"
-	"github.com/k0kubun/go-ansi"
-	"github.com/mitchellh/colorstring"
-	"github.com/satori/go.uuid"
 	"os"
 	"os/signal"
 	"path"
@@ -20,6 +15,12 @@ import (
 	"strings"
 	"syscall"
 	"time"
+
+	"github.com/c-bata/go-prompt"
+	"github.com/k0kubun/go-ansi"
+	"github.com/makeworld-the-better-one/moshpit"
+	"github.com/mitchellh/colorstring"
+	uuid "github.com/satori/go.uuid"
 )
 
 var ffmpegPathFlag = flag.String("ffmpeg", "ffmpeg", "path to ffmpeg executable")

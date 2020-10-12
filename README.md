@@ -1,5 +1,11 @@
 # moshpit
 
+**A fork of the original moshpit tool.**
+
+It now uses Go modules. I might be updating it with more features at some point.
+
+---
+
 A command-line tool for surgical I-Frame removal, so-called datamoshing.  
 Comes with built-in scene cut detection for optimal results.
 

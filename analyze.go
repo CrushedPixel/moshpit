@@ -5,12 +5,13 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
-	"github.com/trimmer-io/go-timecode/timecode"
-	"golang.org/x/net/context"
 	"io"
 	"regexp"
 	"strconv"
 	"time"
+
+	"github.com/crushedpixel/go-timecode/timecode"
+	"golang.org/x/net/context"
 )
 
 type FrameType uint
