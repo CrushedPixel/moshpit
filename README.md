@@ -20,7 +20,7 @@ Comes with built-in scene cut detection for optimal results.
 - [Building from source](#building-from-source)
 
 # Installation
-Aside from the *moshpit* binary, which can be downloaded from the [releases page](https://github.com/CrushedPixel/moshpit/releases),
+Aside from the *moshpit* binary, which can be downloaded from the [releases page](https://github.com/makeworld-the-better-one/moshpit/releases),
 you need a copy of [*FFmpeg*](https://www.ffmpeg.org/) installed on your machine.  
 
 # Usage
@@ -85,21 +85,7 @@ Finally, the moshed AVI file is "baked", which means it's converted back into an
 persisting the artifacts in the AVI file into a stable video file.
 
 # Building from source
-Thanks to golang's flawed dependency system, setting up *moshpit* locally for development
-is a bit of a hassle.
-You can't use `go get`, as we're using modified versions (forks) of some libraries.
-Therefore, you need to clone the repository into your *GOPATH* and use [`go dep`](https://github.com/golang/dep)
-to install dependencies into the `vendor` directory:
 
-```
-mkdir -p $GOPATH/src/github.com/crushedpixel
-cd $GOPATH/src/github.com/crushedpixel
-git clone https://github.com/CrushedPixel/moshpit
-dep ensure
-``` 
-
-You should now be able to build the `moshpit` command binary:
-
-```
-go build github.com/crushedpixel/moshpit/cmd/moshpit
+```shell
+go get github.com/makeworld-the-better-one/moshpit/cmd/moshpit
 ```
