@@ -3,10 +3,11 @@ package moshpit
 import (
 	"errors"
 	"fmt"
-	"golang.org/x/net/context"
 	"math"
 	"path/filepath"
 	"strconv"
+
+	"golang.org/x/net/context"
 )
 
 // ConvertToAvi uses ffmpeg to convert the input file
@@ -125,7 +126,11 @@ func ConvertToMp4(ctx context.Context, ffmpegPath string,
 
 		// take the video stream from the input file,
 		// and the audio stream from the sound file
-		args = append(args, "-map", "0:v:0", "-map", "1:a:0")
+
+		// makeworld: Question mark was added to support videos with
+		// no audio stream. See this issue: https://github.com/CrushedPixel/moshpit/issues/1
+
+		args = append(args, "-map", "0:v:0", "-map", "1:a:0?")
 
 		// the mp4 format requires the aac format for audio streams.
 		// use a high bitrate to ensure high-quality audio
