@@ -1,11 +1,5 @@
 # moshpit
 
-**A fork of the original moshpit tool.**
-
-It now uses Go modules. I might be updating it with more features at some point.
-
----
-
 A command-line tool for surgical I-Frame removal, so-called datamoshing.  
 Comes with built-in scene cut detection for optimal results.
 
@@ -20,7 +14,7 @@ Comes with built-in scene cut detection for optimal results.
 - [Building from source](#building-from-source)
 
 ## Installation
-Aside from the *moshpit* binary, which can be downloaded from the [releases page](https://github.com/makeworld-the-better-one/moshpit/releases),
+Aside from the *moshpit* binary, which can be downloaded from the [releases page](https://github.com/CrushedPixel/moshpit/releases),
 you need a copy of [*FFmpeg*](https://www.ffmpeg.org/) installed on your machine.  
 
 ## Usage
@@ -87,5 +81,5 @@ persisting the artifacts in the AVI file into a stable video file.
 ## Building from source
 
 ```shell
-go get github.com/makeworld-the-better-one/moshpit/cmd/moshpit
+go get github.com/CrushedPixel/moshpit/cmd/moshpit
 ```

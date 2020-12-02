@@ -1,4 +1,4 @@
-module github.com/makeworld-the-better-one/moshpit
+module github.com/CrushedPixel/moshpit
 
 go 1.15
 
