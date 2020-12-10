@@ -2,8 +2,9 @@ package main
 
 import (
 	"bytes"
+
 	"github.com/k0kubun/go-ansi"
-	"github.com/schollz/progressbar"
+	"github.com/schollz/progressbar/v2"
 )
 
 type floatProgressBar struct {
